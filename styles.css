@@ -1,0 +1,25 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 25px;
+}
+
+.header {
+  background-color: orange;
+}
+.content {
+  background-color: gray;
+}
+.footer {
+  background-color: greenyellow;
+}
+
+@media (max-width: 400px) {
+  #app {
+    font-size: 15px;
+  }
+  .header {
+    background-color: hotpink;
+  }
+}
