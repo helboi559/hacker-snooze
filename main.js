@@ -7,28 +7,19 @@ let story = document.querySelector('#stories');
 
 //STEP 2 - ADD content for sample display
 
-// fetch("https://hacker-news.firebaseio.com/v0/item/30944524.json?print=pretty")
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data)
-//         title.textContent= data.title
-//         title.href = data.url
-//         score.textContent = data.score
-//         writer.textContent = data.by
-//     })
 
 //get arr of nums get 100 and transfer data over
 //loop to 100(count)
     //if not at 100
         //create a story and add it
 
-// (async()=>{
-//     let response = await fetch("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
-//     let data = await response.json();
-//     console.log(data)
-// });
-// let top100 = [];
-// let storyCount = 0   
+
+fetch("https://hacker-news.firebaseio.com/v0/updates.json?print=pretty")
+    .then(res => res.json())
+    .then(data => {
+        // console.log(data)
+    })
+
 fetch("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
     .then(res => res.json())
     .then(data => {
@@ -40,26 +31,23 @@ fetch("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
             fetch(`https://hacker-news.firebaseio.com/v0/item/${storyNum}.json?print=pretty`)
             .then(res => res.json())
             .then(info => {
-                // let top100 = []
-                // top100.push(info)
-                // // console.log(top100)
-                // for(let j = 0 ; j < top100.length ; j++) {
-                // // console.log(top100[j])
-                    
-                // }
                 console.log(info)
-                // let title = info.title
-                let parent = document.createElement('div');
-                parent.className = 'parent';
+                let parent = document.createElement('li');
+                parent.className = "list-group-item list-group-item-success d-flex justify-content-between align-items-start";
                 parent.innerHTML = `
-                <a href="${info.url}">${info.title}</a>
+                <div class="ms-2 me-auto">
+                    <a href="${info.url}" class="link-dark">${info.title}</a>
+                    <div class="fw-bold"> 
+                        ${info.score} points by <a href="${info.by}" class="link-dark">${info.by}</a>
+                    </div>
+                </div>
                 `
-                let child = document.createElement('div');
-                child.className = 'child'
-                child.innerHTML = `
-                <p>${info.score}</p>points by <a href="">${info.by}</a>
-                `
-                parent.appendChild(child);
+                // let child = document.createElement('div');
+                // child.className = 'child'
+                // child.innerHTML = `
+                // ${info.score} points by <a href="" class="link-dark">${info.by}</a>
+                // `
+                // parent.appendChild(child);
                 story.appendChild(parent)
 
             })
@@ -67,15 +55,4 @@ fetch("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
          
     })
 
-
-
-// story.appendChild(parent);
-
-// let title = document.querySelector('.parent a')
-// let score = document.querySelector('.child p')
-// let writer = document.querySelector('.child a')
-// // console.log(title)
-// title.textContent= info.title
-// title.href = info.url
-// score.textContent = info.score
-// writer.textContent = info.by
+//
