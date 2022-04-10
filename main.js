@@ -24,34 +24,36 @@ fetch("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
                         <a href="${info.url}" class="link-dark">${info.title}</a>
                         <div class="fw-bold"> 
                             ${info.score} points by <a href="" class="link-secondary">${info.by}</a>
-                            <a href="" class="link-dark">${info.descendants} comments</a>
+                            <a href=""#collapseExample"" class="link-dark" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseWidthExample">${info.descendants} comments</a>
                         </div>
                     </div>
                     `
                 story.appendChild(parent)
-                //now missing user profile and comments page for story
-                //get access to all child links
-                // let storyAuthor = document.querySelectorAll('.link-secondary') 
-                // console.log(storyAuthor)
-                let userProfile = info.by
-                fetch(`https://hacker-news.firebaseio.com/v0/user/${userProfile}.json?print=pretty`)
-                    .then(response => response.json())
-                    .then(information => {
-                    // console.log(information)
+    
+                //get access to all comments
+                let listComments = info.kids
+                // for(let l = 0 ; l < listComments.length ; l++) {
+                //     // console.log(listComments[l])
+
+                //     fetch(`https://hacker-news.firebaseio.com/v0/item/${listComments[l]}.json?print=pretty`)
+                //     .then(response => response.json())
+                //     .then(information => {
+                //     // console.log(information)
+                //     let child = document.createElement('div');
+                //     child.style = "max-height: 120px;"
+                //     child.innerHTML = `
+                //     <div class="" id="collapseExample">
+                //         <div class="card card-body" style="width: 300px"> 
+                //             ${information.text}
+                //         </div>
+                //     </div>
+                //     `
+                //     parent.appendChild(child)
                     
-                    // console.log(profileData)
-                    // for(var j = 0 ; j < information.submitted.length ; j++) {
-                    //     let profileData = information.submitted[j]
-                    //     console.log(information.submitted[j])
-                    //     // fetch(`https://hacker-news.firebaseio.com/v0/data/${profileData}.json?print=pretty`)
-                    //     //     .then(subList => subList.json())
-                    //     //     .then(listInfo => {
-                    //     //     // console.log(listInfo)
-                        
-                    //     //     })
-                    // }
-                    
-                    })
+                //     })
+                // }
+                
+                
             })
         }
          
@@ -158,3 +160,5 @@ newStr.addEventListener('click', () => {
 })
 }
 toggleTabs()
+
+ 
