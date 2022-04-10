@@ -4,7 +4,7 @@
 }
 
 .header {
-  background-color: orange;
+  background-color: rgba(231, 227, 16, 0.973);
   text-align: center;
   flex-direction: column;
 }
